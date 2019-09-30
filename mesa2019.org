@@ -1,4 +1,4 @@
-#+TITLE: MESA Summer School 2019: Lecture 1
+#+TITLE: GENEC Pre-Supernovae
 #+AUTHOR: Sébastien Martinet
 #+OPTIONS: num:nil ^:nil H:6 tags:nil
 #+EXPORT_FILE_NAME: index.html
