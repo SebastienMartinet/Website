@@ -6,10 +6,9 @@
 #+SETUPFILE: theme-readtheorg-local.setup
 #+HTML_HEAD: <style>pre.src {background-color: #303030; color: #e5e5e5;}</style>
 #+HTML_MATHJAX: path: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML
-* Part 0: Overview
-This guide was written as part of the 2019 MESA summer school.  It is
-an introduction to MESA, with a particular focus on using
-~run_star_extras.f~.  It assumes you are using version r11701 of MESA.
+* Part 0: Introduction
+This guide was written as part of the implementation of the Timmes Equation of
+State taking into account pair creation into ~eos.f90~ GENEC module.
 
 If you're new to Fortran, we prepared a short document with [[file:fortran.html][some
 examples]].  Don't let yourself get hung up by the Fortran; quickly ask
