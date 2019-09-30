@@ -329,7 +329,7 @@ for the JavaScript code in this tag.
 <div class="outline-text-2" id="text-orgfe88c4d">
 <p>
   This guide was written as part of the implementation of the Timmes Equation of
-  State taking into account pair creation into <code> eos.f90 </code> GENEC module.
+  State taking into account pair creation into <code>eos.f90</code> GENEC module.
 </p>
 
 <p>
@@ -347,19 +347,25 @@ each task, which you can see by looking at the appropriately named tag
 </div>
 </div>
 <div id="outline-container-orga09ef8f" class="outline-2">
-<h2 id="orga09ef8f">Part 1: Running and controlling MESA</h2>
+<h2 id="orga09ef8f">Part 1: Timmes EOS</h2>
 <div class="outline-text-2" id="text-orga09ef8f">
 <p>
 If you've used MESA before, much of this should be familiar.
 </p>
 </div>
 <div id="outline-container-orgfdea679" class="outline-3">
-<h3 id="orgfdea679">Part 1a: Getting started</h3>
+<h3 id="orgfdea679">Part 1a: Domain of application</h3>
 <div class="outline-text-3" id="text-orgfdea679">
 <p>
 Each time you want to start a MESA project, you should make a new copy
 of the <code>star/work</code> directory.
 </p>
+
+<div class="figure">
+<p><a href="MESA_EOS_rho_T.png"><img src="MESA_EOS_rho_T.png" alt="MESA_EOS_rho_T.png" /></a>
+</p>
+</div>
+
 <pre class="example">
 cp -r $MESA_DIR/star/work my_new_project
 </pre>
