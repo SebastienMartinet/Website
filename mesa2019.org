@@ -1,5 +1,5 @@
 #+TITLE: MESA Summer School 2019: Lecture 1
-#+AUTHOR: Josiah Schwab and Sunny Wong
+#+AUTHOR: Sébastien Martinet
 #+OPTIONS: num:nil ^:nil H:6 tags:nil
 #+EXPORT_FILE_NAME: index.html
 #+EXCLUDE_TAGS: solution
@@ -250,7 +250,7 @@ run, written in Fortran-ish pseudocode.
            if (result == keep_going) exit step_loop
 
            ! redo, retry, or backup must be done inside the step_loop
-         
+
            if (result == redo) then
               result = star_prepare_to_redo(...)
            end if
@@ -593,7 +593,7 @@ the outermost zone is at k=1 and the innermost zone is at k=s% nz.
     do k = 1, s% nz
        s% extra_heat(k) = 0
     end do
-  
+
   end subroutine lecture1_other_energy
 #+END_SRC
 
@@ -633,14 +633,14 @@ point ~s% other_energy~ at the routine you want to be executed.
      type (star_info), pointer :: s
      integer, intent(out) :: ierr
      ierr = 0
-     
+
      ! this is the place to set any procedure pointers you want to change
      ! e.g., other_wind, other_mixing, other_energy  (see star_data.inc)
      s% other_energy => lecture1_other_energy
 
      ...
-     
-  end subroutine extras_controls  
+
+  end subroutine extras_controls
 #+END_SRC
 
 Failure to do perform *both* of these is the most common problem
@@ -657,13 +657,13 @@ people encounter when using the other_* hooks.
     call star_ptr(id, s, ierr)
     if (ierr /= 0) return
 
-    ! allow user-specified values  
+    ! allow user-specified values
     L_extra = s% x_ctrl(2) * Lsun
     delta_M = s% x_ctrl(3) * Msun
 
     do k = 1, s% nz
        ! m(k) is the enclosed mass at the outer cell edge
-       ! so the mass coordinate at the middle of the cell is 
+       ! so the mass coordinate at the middle of the cell is
        Mr = s% m(k) - 0.5 * s% dm(k)
 
        s% extra_heat(k) = L_extra * exp_cr(-Mr/delta_M) / delta_M
@@ -675,7 +675,7 @@ people encounter when using the other_* hooks.
 
   end subroutine lecture1_other_energy
 #+END_SRC
-** Part 2c: Analyzing your models 
+** Part 2c: Analyzing your models
 It is often useful to do some of your analysis in ~run_star_extras~.
 At runtime, you have access to more information about the star than
 will be in the history and profile files.  Additionally, by allowing
@@ -753,7 +753,7 @@ Since ~run_star_extras~ gives us hooks that can access the ~star_info~ at
 each step, that means we can modify parameters as the run proceeds.
 This often saves us the hassle of stopping, saving a model, editing
 the inlist, and restarting.
-*** Task 4: Turn on other_energy at central hydrogen exhaustion  
+*** Task 4: Turn on other_energy at central hydrogen exhaustion
 Instead of having the other energy routine always on, activate it only
 after central hydrogen exhaustion has occurred.
 
@@ -777,10 +777,9 @@ and that first step would not have the extra energy source.  Therefore
 this would subtly break the MESA guarantee that runs restarted from
 photos are identical a run that was never stopped.
 
-One way to avoid this issue would be to perform the same 
+One way to avoid this issue would be to perform the same
 #+BEGIN_SRC f90
   ! activate other_energy after central hydrogen depletion
   if (s% center_h1 < 0.01 ) s% use_other_energy = .true.
 #+END_SRC
 check in ~extras_startup~
-
