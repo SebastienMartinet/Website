@@ -277,14 +277,15 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgfe88c4d">Part 0: Introduction</a></li>
-<li><a href="#orga09ef8f">Part 1: Running and controlling MESA</a>
+<li><a href="#orga09ef8f">Part 1: Timmes EOS</a>
 <ul>
-<li><a href="#orgfdea679">Part 1a: Getting started</a>
+<li><a href="#orgfdea679">Part 1a: Implementation </a>
 <ul>
-<li><a href="#orgf863abb">Task 1: Compile and run the provided work directory</a></li>
+<li><a href="#orgf863abb">Step 1: Standalone Version</a></li>
+<li><a href="#orgf863abc">Step 2: Implementation in GENEC</a></li>
 </ul>
 </li>
-<li><a href="#org7c42d7a">Part 1b: Using inlists</a>
+<li><a href="#org7c42d7a">Part 1b: Domain of application</a>
 <ul>
 <li><a href="#org88bf6e9">Task 2: Read the documentation</a></li>
 </ul>
@@ -350,11 +351,28 @@ each task, which you can see by looking at the appropriately named tag
 <h2 id="orga09ef8f">Part 1: Timmes EOS</h2>
 <div class="outline-text-2" id="text-orga09ef8f">
 <p>
-If you've used MESA before, much of this should be familiar.
+The Timmes EOS is an electron-positron equation of state based on table interpolation of the Helmholtz free energy.
+The interpolation scheme guarantees perfect thermodynamic consistency, independent of the interpolating function.
 </p>
+
+<p>
+With the pair creation phenomena taken into account, GENEC will be able to probe more precisely the Pair Instability Supernovae
+and the last phase of a massive star.
+</p>
+
 </div>
 <div id="outline-container-orgfdea679" class="outline-3">
-<h3 id="orgfdea679">Part 1a: Domain of application</h3>
+<h3 id="orgfdea679">Part 1a: Implementation</h3>
+<div class="outline-text-3" id="text-orgfdea679">
+<p>
+Each time you want to start a MESA project, you should make a new copy
+of the <code>star/work</code> directory.
+</p>
+
+
+</div>
+<div id="outline-container-orgfdea679" class="outline-3">
+<h3 id="orgfdea679">Part 2a: Domain of application</h3>
 <div class="outline-text-3" id="text-orgfdea679">
 <p>
 Each time you want to start a MESA project, you should make a new copy
