@@ -1135,6 +1135,97 @@ could go wrong after a restart and how to fix it.
 <h2 id="org2e0bcd6">Part 3: Nuclear Network</h2>
 <div class="outline-text-2" id="text-org2e0bcd6">
 
+
+
+<p>
+  Geneva stellar evolution code. Started from svn Origin2016 version
+
+  To copy the code to your computer, run:
+</p>
+  <pre class="example">
+  git clone git@github.com:GESEG/GENEC.git
+  </pre>
+<p>
+  git tutorials can be found here: https://www.atlassian.com/git/tutorials/
+
+  The master branch, which you download with the command above will stay the same until the next release. The "develop" branch is the main development branch.
+
+  Before making any changes, please create your own branch off the development branch using these two commands:
+</p>
+  <pre class="example">
+    git checkout develop
+    git checkout -b feature/my_feature develop
+  </pre>
+
+<p>
+  [meaning that you create a new branch called "feature/my_feature" starting from the "develop" branch] [my_feature should be replaced by the topic of the feature you are working on]
+
+  When you want to save changes to the git repo, use this command (after running git status, add, commit): </p>
+
+    <pre class="example">
+git push origin feature/my_feature
+    </pre>
+    <p>
+
+   [this pushes the changes you made from your (local) branch to the remote (origin) repository]
+ </p>
+
+ <p>
+  After downloading the code, the next step is to compile the code.
+
+      Create the following environment variable to point to your code directory (add the following line to your ~/.bashrc file): </p>
+
+      <pre class="src src-f90"><span style="color: #00ffff;">export</span> <span style="color: #ffa07a;">'GENEC_INPUT_DIR=/home/data/git_repos/GENEC/code/'</span>
+      </pre>
+    <p> [you can reload your ~/.bashrc file by typing: source ~/.bashrc]
+
+      Go into the code directory. then create the make directory: </p>
+
+      <pre class="example">
+mkdir make
+cd make
+cp ../make_evosolL ./
+      </pre>
+
+      <p>
+         edit make_evosolL [change necessary variable, minimum change is to use the correct path to the code directory:] REFDIR = $GENEC_INPUT_DIR [default compiler is gfortran]
+
+  [compile the code:] </p>
+    <pre class="example">
+      make -f make_evosolL
+    </pre>
+    <p>
+
+  This creates the executable: evosolL2016 [You can either leave the executable here or copy it to the run directory]
+
+  You can now start preparing all the input files for a model. Go into the "GENEC/tools/makeini" directory for this purpose. Compile makeini codes: make -f make_inifile
+
+  This creates the executable: inifile
+
+  Now go create a directory where you want to save your models. We generally call the directory name according to initial mass, Z, and rotation information, P020z14S000 is a non-rotating, 20 Mo Z=0.014 model.
+</p>
+
+<pre class="example">
+  mkdir P020z14S000
+  cd P020z14S000/
+</pre>
+
+<p>
+
+  Then run the inifile executable from within this directory. Answer the questions Entrez la masse et la metallicite desirees: 20 0.014 Masse, L/Lo, log Teff, Rstar: 20.000 4.582 4.551 5.166 Rotation ? (Oui:1, non:0) 0 Default settings are: - Asplund-Cunha abundances - scaled solar - Geneva format - structure from pre-calculated model Is it ok (yes:1, no:0) 1
+
+  It creates three files: ini020Z14.com: parameter card
+  netalu.dat netdef.in: initial composition file
+
+  Copy the GENEC/tools/Origin_launch.py into your run directory Modify the script as needed:
+  Start the model: ./Origin_launch.py -i ini020Z14.com P020z14S0
+
+  You can stop the calculation with Ctrl-c or either specify a phase to stop at (ex. -p 2 to stop at the end of MS, -p 4 to stop at the end of C-b), or a model number to stop at (ex. -m 2001).
+
+  Then look at the GENEC/docs/ to learn how to plot the output using Origin_Tools.py .     </p>
+
+
+
 </div>
 </div>
 </div>
