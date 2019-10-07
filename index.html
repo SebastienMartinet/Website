@@ -1141,7 +1141,7 @@ could go wrong after a restart and how to fix it.
 
 
 <p>
-  Geneva stellar evolution code. Started from svn Origin2016 version
+  Geneva stellar evolution code. Started from svn Origin2016 version.
 
   To copy the code to your computer, run:
 </p>
@@ -1154,15 +1154,14 @@ could go wrong after a restart and how to fix it.
   Before making any changes, please create your own branch off the development branch using these two commands:
 </p>
   <pre class="example">
-    git checkout develop
-    git checkout -b feature/my_feature develop</pre>
+git checkout develop
+git checkout -b feature/my_feature develop</pre>
 <p>
   [meaning that you create a new branch called "feature/my_feature" starting from the "develop" branch] [my_feature should be replaced by the topic of the feature you are working on]
 
   When you want to save changes to the git repo, use this command (after running git status, add, commit): </p>
 
-    <pre class="example">
-git push origin feature/my_feature</pre>
+    <pre class="example">git push origin feature/my_feature</pre>
     <p>
 
    [this pushes the changes you made from your (local) branch to the remote (origin) repository]
@@ -1181,8 +1180,7 @@ git push origin feature/my_feature</pre>
       <pre class="example">
 mkdir make
 cd make
-cp ../make_evosolL ./
-      </pre>
+cp ../make_evosolL ./</pre>
 
       <p>
          Edit <code>make_evosolL</code> [change necessary variable, minimum change is to use the correct path to the code directory:]</p>
@@ -1190,15 +1188,13 @@ cp ../make_evosolL ./
 <p>  [default compiler is gfortran]
 
   [compile the code:] </p>
-    <pre class="example">
-      make -f make_evosolL</pre>
+    <pre class="example">make -f make_evosolL</pre>
     <p>
 
   This creates the executable: <code>evosolL2016</code> [You can either leave the executable here or copy it to the run directory]
 
   You can now start preparing all the input files for a model. Go into the "GENEC/tools/makeini" directory for this purpose. Compile makeini codes:</p>
-  <pre class="example">
-    make -f make_inifile</pre>
+  <pre class="example">make -f make_inifile</pre>
   <p>
 
   This creates the executable: inifile
@@ -1207,8 +1203,8 @@ cp ../make_evosolL ./
 </p>
 
 <pre class="example">
-  mkdir P020z14S000
-  cd P020z14S000/</pre>
+mkdir P020z14S000
+cd P020z14S000/</pre>
 <p>
 
   Then run the <code>inifile</code> executable from within this directory. Answer the questions Entrez la masse et la metallicite desirees: 20 0.014 Masse, L/Lo, log Teff, Rstar: 20.000 4.582 4.551 5.166 Rotation ? (Oui:1, non:0) 0 Default settings are: - Asplund-Cunha abundances - scaled solar - Geneva format - structure from pre-calculated model Is it ok (yes:1, no:0) 1
@@ -1219,8 +1215,7 @@ cp ../make_evosolL ./
   Copy the GENEC/tools/Origin_launch.py into your run directory Modify the script as needed:
   Start the model: </p>
 
-  <pre class="example">
-    ./Origin_launch.py -i ini020Z14.com P020z14S0</pre>
+  <pre class="example">./Origin_launch.py -i ini020Z14.com P020z14S0</pre>
   <p>
 
   You can stop the calculation with Ctrl-c or either specify a phase to stop at (ex. -p 2 to stop at the end of MS, -p 4 to stop at the end of C-b), or a model number to stop at (ex. -m 2001).
